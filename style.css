@@ -9,26 +9,39 @@ body {
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    width: 45%;
-    height: 80vh;
-    border-radius: 5%;
-    justify-content: center;
-    align-items: center;
+    width: 35%;
+    height: 70vh;
+    border-radius: 2.5%;
+    justify-content: space-around;
     background-color: rgb(129, 198, 245);
 }
 
 
 
 .screen {
+    display: flex;
     width: 80%;
     height: 15%;
+    align-self: center;
     background-color: white;
-    border-radius: auto;
-    margin-top: -65%;
 }
 
 .bottom {
-    background-color: brown;
-    
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    width: 80%;
+    height: 65%;
+    gap: 0.5%;
+}
+
+.bottom button {
+    width: 24.5%;
+    height: 24.5%;
+}
+
+.bottom .zero {
+    width: 49.5%;
 }

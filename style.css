@@ -14,7 +14,7 @@ body {
     width: 35%;
     height: 70vh;
     border-radius: 2.5%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: rgb(129, 198, 245);
 }
 
@@ -32,6 +32,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-self: center;
+    justify-content: center;
+    align-items: center;
     width: 80%;
     height: 65%;
     gap: 0.5%;
@@ -39,7 +41,7 @@ body {
 
 .bottom button {
     width: 24.5%;
-    height: 24.5%;
+    height: 20.5%;
 }
 
 .bottom .zero {

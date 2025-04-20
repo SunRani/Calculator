@@ -1,5 +1,5 @@
-let operand1;
-let operand2;
+let total;
+let current;
 let operator;
 
 function add(a, b) {
@@ -18,18 +18,19 @@ function divide(a, b) {
     return a / b;
 }
 
+
 function operate(operator, operand1, operand2) {
     if (operator === "+") {
-        return add(operand1, operand2)
+        display.textContent= add(parseInt(operand1), parseInt(operand2))
     }
     else if (operator === "-") {
-        return subtract(operand1, operand2)
+        return subtract(parseInt(operand1), parseInt(operand2))
     }
     else if (operator === "*") {
-        return multiply(operand1, operand2)
+        return multiply(parseInt(operand1), parseInt(operand2))
     }
     else if (operator === "/") {
-        return divide(operand1, operand2)
+        return divide(parseInt(operand1), parseInt(operand2))
     }
 }
 
@@ -37,9 +38,10 @@ let display = document.getElementById("screen");
 let bottom = document.getElementById("bottom");
 
 
-let buttons = document.querySelectorAll("button");
+let buttons = document.querySelectorAll("#digit");
 buttons.forEach((button) => {
    button.addEventListener("click", () => {
     display.textContent = button.textContent;
+    console.log(button.textContent);
     }); 
 });

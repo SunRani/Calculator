@@ -19,6 +19,14 @@ function divide(a, b) {
     return a / b;
 }
 
+function Clear(){ 
+    total = "";
+    opperand1 = "";
+    opperand2 = "";
+    operator = "";
+    display.textContent = "";
+}
+
 
 function operate(operator, operand1, operand2) {
     if (operator === "+") {
@@ -50,7 +58,14 @@ let bottom = document.getElementById("bottom");
 let buttons = bottom.querySelectorAll("#digit");
 buttons.forEach((button) => {
    button.addEventListener("click", () => {
-    if (total === "" && operator === "") {
+    if (total !== "") {
+    Clear();
+    opperand1 += button.textContent
+    display.textContent += button.textContent;
+    display.textContent = display.textContent.replace(/[^a-z0-9]/gi, '');
+    }
+
+    else if (total === "" && operator === "") {
     opperand1 += button.textContent
     display.textContent += button.textContent;
     display.textContent = display.textContent.replace(/[^a-z0-9]/gi, '');
@@ -67,17 +82,28 @@ buttons.forEach((button) => {
 let operators = bottom.querySelectorAll("#operator");
 operators.forEach((Operator) => {
     Operator.addEventListener("click", () => {
-        display.textContent = Operator.textContent;
-        operator = Operator.textContent;
+        if (operator !== "" && opperand1 !== "" && opperand2 !== "") {
+            operate(operator, opperand1, opperand2);
+            console.log(operator);
+            console.log(opperand1);
+            console.log(opperand2);
+            opperand1 = total
+            opperand2 = "";
+            operator = Operator.textContent
+        }
+        else {
+            display.textContent = Operator.textContent;
+            operator = Operator.textContent;
+        }
+
+        
     });
 });
 
 let equal = document.getElementById("equal");
     equal.addEventListener("click", () => {
         operate(operator, opperand1, opperand2);
-        console.log(operator);
-        console.log(opperand1);
-        console.log(opperand2);
+        
         opperand1 = total;
         opperand2 = "";
     });

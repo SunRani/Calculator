@@ -58,7 +58,7 @@ let bottom = document.getElementById("bottom");
 let buttons = bottom.querySelectorAll("#digit");
 buttons.forEach((button) => {
    button.addEventListener("click", () => {
-    if (total !== "") {
+    if (!total && !operator && !opperand2) {
     Clear();
     opperand1 += button.textContent
     display.textContent += button.textContent;
@@ -72,9 +72,12 @@ buttons.forEach((button) => {
     }
     else {
     opperand2 += button.textContent
-    display.textContent += button.textContent;
+    display.textContent = opperand2;
     display.textContent = display.textContent.replace(/[^a-z0-9]/gi, '');
     }
+    console.log("Operator: " + operator);
+    console.log("Opperand 1: " + opperand1);
+    console.log("Opperand 2: " + opperand2);
     
     }); 
 });
@@ -84,18 +87,18 @@ operators.forEach((Operator) => {
     Operator.addEventListener("click", () => {
         if (operator !== "" && opperand1 !== "" && opperand2 !== "") {
             operate(operator, opperand1, opperand2);
-            console.log(operator);
-            console.log(opperand1);
-            console.log(opperand2);
-            opperand1 = total
+            opperand1 = total;
             opperand2 = "";
-            operator = Operator.textContent
+            operator = Operator.textContent;
+            
         }
         else {
             display.textContent = Operator.textContent;
             operator = Operator.textContent;
         }
-
+        console.log("Operator: " + operator);
+    console.log("Opperand 1: " + opperand1);
+    console.log("Opperand 2: " + opperand2);
         
     });
 });
@@ -106,6 +109,7 @@ let equal = document.getElementById("equal");
         
         opperand1 = total;
         opperand2 = "";
+
     });
 
 let clear = document.getElementById("clear");

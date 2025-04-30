@@ -58,22 +58,24 @@ let bottom = document.getElementById("bottom");
 let buttons = bottom.querySelectorAll("#digit");
 buttons.forEach((button) => {
    button.addEventListener("click", () => {
-    if (!total && !operator && !opperand2) {
+    if (!total && !operator && !opperand1) {
     Clear();
     opperand1 += button.textContent
-    display.textContent += button.textContent;
-    display.textContent = display.textContent.replace(/[^a-z0-9]/gi, '');
+    display.textContent = opperand1;
+    display.textContent = display.textContent.replace(/[^0-9\.]/gi, '');
+        
     }
 
     else if (total === "" && operator === "") {
     opperand1 += button.textContent
-    display.textContent += button.textContent;
-    display.textContent = display.textContent.replace(/[^a-z0-9]/gi, '');
+    display.textContent = opperand1;
+    display.textContent = display.textContent.replace(/[^0-9.]/gi, '');
+        
     }
     else {
     opperand2 += button.textContent
     display.textContent = opperand2;
-    display.textContent = display.textContent.replace(/[^a-z0-9]/gi, '');
+    display.textContent = display.textContent.replace(/[^0-9.]/gi, '');
     }
     console.log("Operator: " + operator);
     console.log("Opperand 1: " + opperand1);
@@ -118,7 +120,7 @@ clear.addEventListener("click", () =>{
     opperand1 = "";
     opperand2 = "";
     operator = "";
-    display.textContent = "";
+    display.textContent = "0";
 })
 
 let ce = document.getElementById("ce");
@@ -127,5 +129,5 @@ ce.addEventListener("click", () =>{
     opperand1 = "";
     opperand2 = "";
     operator = "";
-    display.textContent = "";
+    display.textContent = "0";
 })

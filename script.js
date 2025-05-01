@@ -27,26 +27,34 @@ function Clear(){
     display.textContent = "";
 }
 
-
 function operate(operator, operand1, operand2) {
+    if (operand1.includes(".") || opperand2.includes(".")) {
+        operand1 = parseFloat(operand1);
+        operand2 = parseFloat(operand2);
+    }
+    else {
+        operand1 = parseInt(operand1);
+        operand2 = parseInt(operand2);
+    }
+
     if (operator === "+") {
-        total = add(parseInt(operand1), parseInt(operand2));
+        total = add(operand1, operand2);
         display.textContent = Math.round(total * 100) / 100;
         
     }
     else if (operator === "-") {
-        total = subtract(parseInt(operand1), parseInt(operand2)).toFixed(2);
+        total = subtract(operand1, operand2).toFixed(6);
         display.textContent = Math.round(total * 100) / 100;
         
     }
     else if (operator === "*") {
-        total = multiply(parseInt(operand1), parseInt(operand2)).toFixed(2);
+        total = multiply(operand1, operand2).toFixed(6);
         display.textContent = Math.round(total * 100) / 100;
         
     }
     else if (operator === "/") {
-        total = divide(parseInt(operand1), parseInt(operand2)).toFixed(2);
-        display.textContent = Math.round(total * 100) / 100;
+        total = divide(operand1, operand2).toFixed(6);
+        display.textContent = total;
         
     }
 }
@@ -60,26 +68,27 @@ buttons.forEach((button) => {
    button.addEventListener("click", () => {
     if (!total && !operator && !opperand1) {
     Clear();
-    opperand1 += button.textContent
+    opperand1 += button.textContent;
+    let decimal = opperand1.split(".");
+    opperand1 = decimal[0] + (decimal.length > 1 ? '.' + decimal.slice(1).join('') : '')
     display.textContent = opperand1;
-    display.textContent = display.textContent.replace(/[^0-9\.]/gi, '');
         
     }
 
     else if (total === "" && operator === "") {
-    opperand1 += button.textContent
+    opperand1 += button.textContent;
+    let decimal = opperand1.split(".");
+    opperand1 = decimal[0] + (decimal.length > 1 ? '.' + decimal.slice(1).join('') : '')
     display.textContent = opperand1;
-    display.textContent = display.textContent.replace(/[^0-9.]/gi, '');
         
     }
     else {
     opperand2 += button.textContent
+    let decimal = opperand2.split(".");
+    opperand2 = decimal[0] + (decimal.length > 1 ? '.' + decimal.slice(1).join('') : '')
     display.textContent = opperand2;
-    display.textContent = display.textContent.replace(/[^0-9.]/gi, '');
     }
-    console.log("Operator: " + operator);
-    console.log("Opperand 1: " + opperand1);
-    console.log("Opperand 2: " + opperand2);
+
     
     }); 
 });
